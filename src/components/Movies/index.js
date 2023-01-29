@@ -16,7 +16,7 @@ export default function Movies() {
     return (
       <div key={item.id}>
         <a className="movieTitle" href={item.url}>
-          {item.title}
+          {item.title} ({item.year})
         </a>
       </div>
     )
