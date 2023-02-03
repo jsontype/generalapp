@@ -7,7 +7,8 @@
 }
 
 .movieTitle:hover {
-  background: pink;
+  color: white;
+  background: gray;
 }
 
 .movieImage {
