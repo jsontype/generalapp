@@ -13,7 +13,6 @@ export default function Movies() {
   }, [])
 
   const render = movies.map((item) => {
-    const genres = item.genres
 
     return (
       
