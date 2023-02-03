@@ -13,10 +13,14 @@ export default function Movies() {
   }, [])
 
   const render = movies.map((item) => {
+    const genres = item.genres
+
     return (
+      
       <div key={item.id}>
         <a className="movieTitle" href={item.url}>
           {item.title} ({item.year})
+          <div className="genre">장르 : {item.genres.join(", ")}</div>
         </a>
       </div>
     )
