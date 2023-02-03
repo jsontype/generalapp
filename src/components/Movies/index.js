@@ -13,7 +13,7 @@ export default function Movies() {
   }, [])
 
   const render = movies.map((item) => {
-    return ( 
+    return (
       <div key={item.id}>
         <a className="movieTitle" href={item.url}>
           {item.title} ({item.year})
