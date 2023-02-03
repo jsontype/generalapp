@@ -18,6 +18,7 @@ export default function Movies() {
         <a className="movieTitle" href={item.url}>
           {item.title} ({item.year})
         </a>
+        <img className="movieImage" src={item.large_cover_image} alt={item.title}></img>
       </div>
     )
   })
