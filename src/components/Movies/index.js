@@ -22,6 +22,7 @@ export default function Movies() {
           <div className="genre">장르 : {item.genres.join(", ")}</div>
           <div className={rank}>평점 : {item.rating || "(평점없음)"} / 10</div>
         </a>
+        <img className="movieImage" src={item.large_cover_image} alt={item.title}></img>
       </div>
     )
   })
