@@ -19,7 +19,7 @@ export default function Movies() {
       <div key={item.id}>
         <a className="movieTitle" href={item.url}>
           {item.title} ({item.year})
-          <div className={rank}>평점 : {item.rating || '(평점없음)'} / 10 </div>
+          <div className={rank}>평점 : {item.rating || "(평점없음)"} / 10</div>
         </a>
       </div>
     )
