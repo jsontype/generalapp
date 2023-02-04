@@ -13,11 +13,14 @@ export default function Movies() {
   }, [])
 
   const render = movies.map((item) => {
+    const rank = item.rating >= 9 ? "good" : item.rating >= 7 ? "soso" : "bad"
+
     return (
       <div key={item.id}>
         <a className="movieTitle" href={item.url}>
           {item.title} ({item.year})
           <div className="genre">장르 : {item.genres.join(", ")}</div>
+          <div className={rank}>평점 : {item.rating || "(평점없음)"} / 10</div>
         </a>
       </div>
     )
