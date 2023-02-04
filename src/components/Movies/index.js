@@ -17,12 +17,18 @@ export default function Movies() {
 
     return (
       <div key={item.id}>
+        <h2 className="title">무비 앱</h2>
+
         <a className="movieTitle" href={item.url}>
           {item.title} ({item.year})
           <div className="genre">장르 : {item.genres.join(", ")}</div>
           <div className={rank}>평점 : {item.rating || "(평점없음)"} / 10</div>
         </a>
-        <img className="movieImage" src={item.large_cover_image} alt={item.title}></img>
+        <img
+          className="movieImage"
+          src={item.large_cover_image}
+          alt={item.title}
+        ></img>
       </div>
     )
   })
