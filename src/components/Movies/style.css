@@ -1,6 +1,8 @@
 .title {
   text-align: center;
+  color: gray;
 }
+
 .movieTitle {
   display: block;
   text-decoration: none;
