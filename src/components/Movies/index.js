@@ -19,10 +19,10 @@ export default function Movies() {
       <div key={item.id}>
         <div className="movieItem">
           <a className="movieTitle" href={item.url}>
-            {item.title} ({item.year})
+            {item.title} {item.rating <= 7 ? '' : '🔥'} ({item.year})
             <div className="genre">장르 : {item.genres.join(", ")}</div>
             <div className={rank}>
-              평점 : {item.rating || "(평점없음)"} / 10
+              평점 : {item.rating || "(평점없음)"} / 10 
             </div>
           </a>
           <img
