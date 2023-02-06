@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react"
 import "./style.css"
+import MovieDetail from "./MovieDetail"
 
-export default function Movies() {
+export default function Movies () {
+  // 영화 아이템
   const [movies, setMovies] = useState([])
-
+  // 영화 아이템 중 "타이틀을 클릭해 상세정보가 호출된 영화 아이템"의 id
+  const [detailId, setDetailId] = useState(0)
+ 
   useEffect(() => {
     // api 호출
     // fetch("https://yts.mx/api/v2/list_movies.json?sort_by=rating")
@@ -12,26 +16,24 @@ export default function Movies() {
       .then((json) => setMovies(json.data.movies))
   }, [])
 
+  // 주의 : render 안에 onClick 프롭 넣을 때는 함수형업데이트 해야함 (예, onClick={() => setIsOpen()})
   const render = movies.map((item) => {
-    const rank = item.rating >= 9 ? "good" : item.rating >= 7 ? "soso" : "bad"
-
     return (
-      <div key={item.id}>
-        <div className="movieItem">
-          <a className="movieTitle" href={item.url}>
-            {item.title} ({item.year})
-            <div className="genre">장르 : {item.genres.join(", ")}</div>
-            <div className={rank}>
-              평점 : {item.rating || "(평점없음)"} / 10
+      <>
+        <div key={item.id}>
+          <div className="movieItem">
+            <div className="movieTitle" onClick={() => { item.id !== detailId ? setDetailId(item.id) : setDetailId(0)}}>
+              {item.title} ({item.year})
             </div>
-          </a>
-          <img
-            className="movieImage"
-            src={item.large_cover_image}
-            alt={item.title}
-          ></img>
+            <img
+              className="movieImage"
+              src={item.large_cover_image}
+              alt={item.title}
+            ></img>
+          </div>
         </div>
-      </div>
+        { detailId === item.id && <MovieDetail item={item} /> }
+      </>
     )
   })
 
