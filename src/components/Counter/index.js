@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import './style.css'
 
 export default function Counter () {
   const [count, setCount] = useState(0)
@@ -13,9 +14,9 @@ export default function Counter () {
 
   return (
     <>
-      <div>{count}</div>
-      <button onClick={onIncrease}>+</button>
-      <button onClick={onDecrease}>-</button>
+      <div className="countLabel">{count}</div>
+      <button className="countBtn" onClick={onIncrease}>+</button>
+      <button className="countBtn" onClick={onDecrease}>-</button>
     </>
   )
 }

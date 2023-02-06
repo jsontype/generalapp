@@ -14,6 +14,7 @@ export default function App() {
   return (
     <div className="App">
       <button
+        className="navbarItem"
         onClick={() => {
           setIsMovies(!isMovies)
           setIsNews(false)
@@ -23,6 +24,7 @@ export default function App() {
         무비
       </button>
       <button
+        className="navbarItem"
         onClick={() => {
           setIsNews(!isNews)
           setIsMovies(false)
@@ -32,6 +34,7 @@ export default function App() {
         뉴스
       </button>
       <button
+        className="navbarItem"
         onClick={() => {
           setCounter(!isCounter)
           setIsNews(false)

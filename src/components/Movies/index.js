@@ -37,7 +37,7 @@ export default function Movies() {
 
   return (
     <div>
-      <h2 className="title">무비 앱</h2>
+      <h1 className="title">무비 앱</h1>
       {render}
     </div>
   )
