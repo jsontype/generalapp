@@ -19,21 +19,11 @@ export default function Movies () {
   // 주의 : render 안에 onClick 프롭 넣을 때는 함수형업데이트 해야함 (예, onClick={() => setIsOpen()})
   const render = movies.map((item) => {
     return (
-<<<<<<< HEAD
-      <div key={item.id}>
-        <div className="movieItem">
-          <a className="movieTitle" href={item.url}>
-            {item.title} {item.rating <= 7 ? '' : '🔥'} ({item.year})
-            <div className="genre">장르 : {item.genres.join(", ")}</div>
-            <div className={rank}>
-              평점 : {item.rating || "(평점없음)"} / 10 
-=======
       <>
         <div key={item.id}>
           <div className="movieItem">
             <div className="movieTitle" onClick={() => { item.id !== detailId ? setDetailId(item.id) : setDetailId(0)}}>
-              {item.title} ({item.year})
->>>>>>> master
+              {item.title}{item.rating >= 8 ? '🔥' : ''}({item.year})
             </div>
             <img
               className="movieImage"
