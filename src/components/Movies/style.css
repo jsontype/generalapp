@@ -13,7 +13,8 @@
   border: 1px solid gray;
   border-radius: 5px;
   color: gray;
-  flex: 1;
+  font-size: 30px;
+  flex: 11;
 }
 
 .movieTitle:hover {
@@ -22,11 +23,23 @@
 }
 
 .movieImage {
-  width: auto;
-  height: 100px;
+  width: 10px;
+  height: auto;
   border: 1px solid gray;
   margin-left: 8px;
   border-radius: 10px;
+  flex: 1;
+}
+
+.movieDetail {
+  display: block;
+  text-decoration: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  color: gray;
+  font-size: 30px;
+  flex: 1;
+  margin-bottom: 30px;
 }
 
 .good {
