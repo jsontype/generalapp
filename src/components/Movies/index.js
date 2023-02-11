@@ -23,7 +23,7 @@ export default function Movies () {
         <div key={item.id}>
           <div className="movieItem">
             <div className="movieTitle" onClick={() => { item.id !== detailId ? setDetailId(item.id) : setDetailId(0)}}>
-              {item.title} ({item.year})
+              {item.title}{item.rating >= 8 ? '🔥' : ''}({item.year})
             </div>
             <img
               className="movieImage"
