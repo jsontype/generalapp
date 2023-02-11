@@ -1,7 +1,11 @@
-import { useState } from 'react'
 import './style.css'
 
-export default function Counter ({ count, setCount }) {
+type CounterProps = {
+  count: number,
+  setCount: (count: number) => void,
+}
+
+export default function Counter ({ count, setCount }: CounterProps) {
   const onIncrease = () => {
     setCount(count + 1)
   }

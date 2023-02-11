@@ -1,7 +1,20 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import "./style.css"
 
-export default function News({ news, setNews }) {
+type NewsItemProps = {
+  points: number,
+  id: number,
+  url: string,
+  title: string,
+  user: string,
+}
+
+type NewsProps = {
+  news: NewsItemProps[],
+  setNews: (news: []) => void,
+}
+
+export default function News({ news, setNews }: NewsProps) {
   useEffect(() => {
     // api 호출
     fetch("https://api.hnpwa.com/v0/news.json")
