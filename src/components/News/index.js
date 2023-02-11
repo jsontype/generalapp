@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import "./style.css"
 
-export default function Movies() {
+export default function News() {
   const [news, setNews] = useState([])
 
   useEffect(() => {
@@ -11,15 +11,25 @@ export default function Movies() {
       .then((json) => setNews(json))
   }, [])
 
-  console.log(news)
-
   const render = news.map((item) => {
+    const rank = item.points >= 90 ? "good" : item.points >= 70 ? "soso" : "bad"
+
     return (
-      <div key={item.id}>
-        <div className="newsTitle">{item.title}</div>
+      <div key={item.id} className="newsItem">
+        <a className="newsTitle" href={item.url}>
+          {item.title}
+        </a>
+        <span className={rank}>
+          포인트 : {item.points || "(평점없음)"}
+        </span>
       </div>
     )
   })
 
-  return <div>{render}</div>
+  return(
+    <div>
+      <h2 className="title">뉴스 </h2>
+      {render}
+    </div>
+  )
 }

@@ -1,3 +1,28 @@
 .newsTitle {
   font-size: 20px;
+  color: gray;
+  text-decoration: none;
+}
+
+
+.newsTitle:hover {
+  color: pink;
+}
+
+
+.good {
+  color: blue;
+}
+
+.soso {
+  color: orange;
+}
+
+.bad {
+  color: red;
+}
+
+.newsItem > * {
+  margin-left: 5px;
+  margin-right: 5px;
 }
