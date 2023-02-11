@@ -1,12 +1,8 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import "./style.css"
 
-export default function Todos() {
+export default function Todos({ todos, setTodos, text, setText, key, setKey }) {
   // JS
-  const [todos, setTodos] = useState([])
-  const [text, setText] = useState('')
-  const [key, setKey] = useState(21)
-
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/todos")
       .then(res => res.json())

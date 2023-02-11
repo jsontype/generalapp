@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react"
 import "./style.css"
 
-export default function News() {
-  const [news, setNews] = useState([])
-
+export default function News({ news, setNews }) {
   useEffect(() => {
     // api 호출
     fetch("https://api.hnpwa.com/v0/news.json")

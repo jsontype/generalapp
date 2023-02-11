@@ -12,6 +12,17 @@ export default function App() {
   const [isNews, setIsNews] = useState(false)
   const [isTodos, setIsTodos] = useState(false)
 
+  // 카운터 아이템
+  const [count, setCount] = useState(0)
+  // 뉴스 아이템
+  const [news, setNews] = useState([])
+  // 투두 아이템
+  const [todos, setTodos] = useState([])
+  const [text, setText] = useState('')
+  const [key, setKey] = useState(21)
+  // 영화 아이템
+  const [movies, setMovies] = useState([])
+
   // XML
   return (
     <div className="App">
@@ -59,10 +70,10 @@ export default function App() {
       >
         투두
       </button>      
-      {isCounter && <Counter />}
-      {isMovies && <Movies />}
-      {isNews && <News />}
-      {isTodos && <Todos />}
+      {isCounter && <Counter count={count} setCount={setCount} />}
+      {isMovies && <Movies movies={movies} setMovies={setMovies} />}
+      {isNews && <News news={news} setNews={setNews} />}
+      {isTodos && <Todos todos={todos} setTodos={setTodos} text={text} setText={setText} key={key} setKey={setKey} />}
     </div>
   )
 }

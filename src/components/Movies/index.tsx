@@ -2,9 +2,7 @@ import { useState, useEffect } from "react"
 import "./style.css"
 import MovieDetail from "./MovieDetail"
 
-export default function Movies () {
-  // 영화 아이템
-  const [movies, setMovies] = useState([])
+export default function Movies ({ movies, setMovies }) {
   // 영화 아이템 중 "타이틀을 클릭해 상세정보가 호출된 영화 아이템"의 id
   const [detailId, setDetailId] = useState(0)
  
