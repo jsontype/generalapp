@@ -1,3 +1,8 @@
 .newsTitle {
   font-size: 20px;
 }
+
+
+.newsTitle:hover {
+  color: pink;
+}

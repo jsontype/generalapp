@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import "./style.css"
 
-export default function Movies() {
+export default function News() {
   const [news, setNews] = useState([])
 
   useEffect(() => {
@@ -16,10 +16,17 @@ export default function Movies() {
   const render = news.map((item) => {
     return (
       <div key={item.id}>
-        <div className="newsTitle">{item.title}</div>
+        <a className="newsTitle" href={item.url}>
+            {item.title}
+          </a>
       </div>
     )
   })
 
-  return <div>{render}</div>
+  return(
+    <div>
+      <h2 className="title">뉴스 </h2>
+      {render}
+    </div>
+  )
 }
