@@ -19,9 +19,14 @@ export default function News() {
         <a className="newsTitle" href={item.url}>
           {item.title}
         </a>
-        <span className={rank}>
-          포인트 : {item.points || "(평점없음)"}
-        </span>
+        <div className="newDetailItem">
+          <span className="newsWriter">
+            작성자 : {item.user}
+          </span>
+          <span className="newsPoint">
+            포인트 : <span className={rank}>{item.points || "(평점없음)"}</span>
+          </span>
+        </div>
       </div>
     )
   })

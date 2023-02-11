@@ -2,8 +2,10 @@
   font-size: 20px;
   color: gray;
   text-decoration: none;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 3px;
 }
-
 
 .newsTitle:hover {
   color: pink;
@@ -22,7 +24,27 @@
   color: red;
 }
 
-.newsItem > * {
-  margin-left: 5px;
-  margin-right: 5px;
+.newsItem {
+  margin-top: 20px;
+}
+
+.newDetailItem {
+  margin-top: 7px;
+  margin-bottom: 10px;  
+}
+
+.newDetailItem > span {
+  margin-left: 10px;
+}
+
+.newDetailItem > span:not(:last-child)::after {
+  content: ' | ';
+}
+
+.newsPoint {
+  color: gray;
+}
+
+.newsWriter {
+  color: gray;
 }

@@ -1,7 +1,7 @@
-import "./App.css"
 import { useState, useEffect } from "react"
+import "./style.css"
 
-export default function App() {
+export default function Todos() {
   // JS
   const [todos, setTodos] = useState([])
   const [text, setText] = useState('')
