@@ -6,7 +6,7 @@ export default function News() {
 
   useEffect(() => {
     // api 호출
-    fetch("https://api.hnpwa.com/v0/news.json?sort_by=points")
+    fetch("https://api.hnpwa.com/v0/news.json")
       .then((res) => res.json())
       .then((json) => setNews(json))
   }, [])
@@ -15,13 +15,13 @@ export default function News() {
     const rank = item.points >= 90 ? "good" : item.points >= 70 ? "soso" : "bad"
 
     return (
-      <div key={item.id}>
+      <div key={item.id} className="newsItem">
         <a className="newsTitle" href={item.url}>
-            {item.title}
-            <div className={rank}>
-            평점 : {item.points || "(평점없음)"} / 100
-            </div>
-          </a>
+          {item.title}
+        </a>
+        <span className={rank}>
+          포인트 : {item.points || "(평점없음)"}
+        </span>
       </div>
     )
   })

@@ -1,5 +1,7 @@
 .newsTitle {
   font-size: 20px;
+  color: gray;
+  text-decoration: none;
 }
 
 
@@ -18,4 +20,9 @@
 
 .bad {
   color: red;
+}
+
+.newsItem > * {
+  margin-left: 5px;
+  margin-right: 5px;
 }
