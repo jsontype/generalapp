@@ -5,6 +5,13 @@ import News from "./components/News"
 import Counter from "./components/Counter"
 import Todos from "./components/Todos"
 
+export type TodosItemProps = {
+  id: number,
+  completed: boolean,
+  title: string,
+  userId: number,
+}
+
 export default function App() {
   // JS
   const [isCounter, setCounter] = useState(false)
@@ -17,9 +24,8 @@ export default function App() {
   // 뉴스 아이템
   const [news, setNews] = useState([])
   // 투두 아이템
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState<TodosItemProps[]>([])
   const [text, setText] = useState('')
-  const [key, setKey] = useState(21)
   // 영화 아이템
   const [movies, setMovies] = useState([])
 
@@ -73,7 +79,7 @@ export default function App() {
       {isCounter && <Counter count={count} setCount={setCount} />}
       {isMovies && <Movies movies={movies} setMovies={setMovies} />}
       {isNews && <News news={news} setNews={setNews} />}
-      {isTodos && <Todos todos={todos} setTodos={setTodos} text={text} setText={setText} key={key} setKey={setKey} />}
+      {isTodos && <Todos todos={todos} setTodos={setTodos} text={text} setText={setText} />}
     </div>
   )
 }
