@@ -1,13 +1,23 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { TodosItemProps } from '../../App'
 import "./style.css"
 
-export default function Todos({ todos, setTodos, text, setText, key, setKey }) {
+type TodosProps = {
+  todos: TodosItemProps[],
+  setTodos: (todos: TodosItemProps[]) => void
+  text: string,
+  setText: (text: string) => void
+}
+
+export default function Todos({ todos, setTodos, text, setText }: TodosProps) {
   // JS
+  const [key, setKey] = useState(21)
+
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/todos")
       .then(res => res.json())
       .then(json => {
-        const result = json.filter(item => item.userId === 1)
+        const result = json.filter((item: { userId: number }) => item.userId === 1)
         setTodos(result)
       })
   }, [])
@@ -20,12 +30,12 @@ export default function Todos({ todos, setTodos, text, setText, key, setKey }) {
   // const modObj = () => { setObj({ ...obj, email: 'zzzz@example.com' }) } // 객체 키밸류 수정
   // const delObj = () => { const { email, ...delObj } = obj; setObj(delObj)} // 객체 키 삭제
 
-  const onChange = (e) => {
+  const onChange = (e: { preventDefault: () => void; target: { value: string } }) => {
     e.preventDefault()
     setText(e.target.value)
   }
 
-  const onCreate = (e) => {
+  const onCreate = (e: { preventDefault: () => void }) => {
     e.preventDefault()
     const newTodo = {
       id: key,
@@ -38,11 +48,11 @@ export default function Todos({ todos, setTodos, text, setText, key, setKey }) {
     setText('')
   }
 
-  const onComplted = (id) => {
+  const onComplted = (id: number) => {
     setTodos(todos.map((item) => { return item.id === id ? { ...item, completed: !item.completed } : { ...item }}))
   }
 
-  const onDelete = (id) => {
+  const onDelete = (id: number) => {
     setTodos(todos.filter((item) => { return item.id !== id }))
   }
 
