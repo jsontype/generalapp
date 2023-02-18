@@ -2,12 +2,12 @@ import { useState, useEffect } from "react"
 import "./style.css"
 import MovieDetail from "./MovieDetail"
 
-type MoviesItemProps = {
-  id: number,
-  title: string,
-  rating: number,
-  year: number,
-  large_cover_image: string,
+export type MoviesItemProps = {
+  id: number
+  title: string
+  rating: number
+  year: number
+  large_cover_image: string
   genres?: string[]
 }
 

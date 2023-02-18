@@ -19,8 +19,6 @@ export default function App() {
   const [isNews, setIsNews] = useState(false)
   const [isTodos, setIsTodos] = useState(false)
 
-
-
   // 카운터 아이템
   const [count, setCount] = useState(0)
   // 뉴스 아이템

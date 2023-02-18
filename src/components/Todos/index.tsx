@@ -69,6 +69,7 @@ export default function Todos({ todos, setTodos, text, setText }: TodosProps) {
       </div>
     )
   })
+
   // XML
   return (
     <div className="App">
