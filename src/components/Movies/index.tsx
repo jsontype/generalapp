@@ -26,7 +26,7 @@ export default function Movies ({ movies, setMovies }: MoviesProps) {
     fetch("https://yts.mx/api/v2/list_movies.json")
       .then((res) => res.json())
       .then((json) => setMovies(json.data.movies))
-  }, [])
+  }, [setMovies])
 
   // 주의 : render 안에 onClick 프롭 넣을 때는 함수형업데이트 해야함 (예, onClick={() => setIsOpen()})
   const render = movies.map((item) => {

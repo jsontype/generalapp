@@ -15,12 +15,14 @@ export default function Todos({ todos, setTodos, text, setText }: TodosProps) {
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/todos")
-      .then(res => res.json())
-      .then(json => {
-        const result = json.filter((item: { userId: number }) => item.userId === 1)
+      .then((res) => res.json())
+      .then((json) => {
+        const result = json.filter(
+          (item: { userId: number }) => item.userId === 1
+        )
         setTodos(result)
       })
-  }, [])
+  }, [setTodos])
 
   // 불변성의 법칙을 지키면서 CRUD중 CUD를 하는 방법
   // const addArr = () => { setArr([...arr, 3]) } // 배열 추가
