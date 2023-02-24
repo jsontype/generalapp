@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './style.css'
+import './style.scss'
 
 type Counterprops = {
   count: number
