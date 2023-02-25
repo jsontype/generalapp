@@ -4,6 +4,7 @@ import News from "./components/News"
 import Counter from "./components/Counter"
 import Todos from "./components/Todos"
 import styles from "./App.module.scss"
+import { Routes, Route, Link } from "react-router-dom"
 
 export type TodosItemProps = {
   id: number
@@ -14,11 +15,6 @@ export type TodosItemProps = {
 
 export default function App() {
   // JS
-  const [isCounter, setCounter] = useState(false)
-  const [isMovies, setIsMovies] = useState(false)
-  const [isNews, setIsNews] = useState(false)
-  const [isTodos, setIsTodos] = useState(false)
-
   // 카운터 아이템
   const [count, setCount] = useState(0)
   // 뉴스 아이템
@@ -32,61 +28,47 @@ export default function App() {
   // XML
   return (
     <div className={styles.App}>
-      <button
-        className={styles.navbarItem}
-        onClick={() => {
-          setCounter(!isCounter)
-          setIsNews(false)
-          setIsMovies(false)
-          setIsTodos(false)
-        }}
-      >
-        카운터
-      </button>
-      <button
-        className={styles.navbarItem}
-        onClick={() => {
-          setIsMovies(!isMovies)
-          setIsNews(false)
-          setCounter(false)
-          setIsTodos(false)
-        }}
-      >
-        무비
-      </button>
-      <button
-        className={styles.navbarItem}
-        onClick={() => {
-          setIsNews(!isNews)
-          setIsMovies(false)
-          setCounter(false)
-          setIsTodos(false)
-        }}
-      >
-        뉴스
-      </button>
-      <button
-        className={styles.navbarItem}
-        onClick={() => {
-          setIsTodos(!isTodos)
-          setIsNews(false)
-          setIsMovies(false)
-          setCounter(false)
-        }}
-      >
-        투두
-      </button>
-      {isCounter && <Counter count={count} setCount={setCount} />}
-      {isMovies && <Movies movies={movies} setMovies={setMovies} />}
-      {isNews && <News news={news} setNews={setNews} />}
-      {isTodos && (
-        <Todos
-          todos={todos}
-          setTodos={setTodos}
-          text={text}
-          setText={setText}
-        />
-      )}
+      <Link to="/counter">
+        <button className={styles.navbarItem}>카운터</button>
+      </Link>
+      <Link to="/movies">
+        <button className={styles.navbarItem}>무비</button>
+      </Link>
+      <Link to="/news">
+        <button className={styles.navbarItem}>뉴스</button>
+      </Link>
+      <Link to="/todos">
+        <button className={styles.navbarItem}>투두</button>
+      </Link>
+
+      <Routes>
+        <Route
+          path="/counter"
+          element={<Counter count={count} setCount={setCount} />}
+        ></Route>
+        <Route
+          path="/movies"
+          element={<Movies movies={movies} setMovies={setMovies} />}
+        ></Route>
+        <Route
+          path="/news"
+          element={<News news={news} setNews={setNews} />}
+        ></Route>
+        <Route
+          path="/todos"
+          element={
+            <Todos
+              todos={todos}
+              setTodos={setTodos}
+              text={text}
+              setText={setText}
+            />
+          }
+        ></Route>
+        {/* <Route path="/movies" element={<Profile />}>
+          <Route path=":rating" element={<Profile />}></Route>
+        </Route> */}
+      </Routes>
     </div>
   )
 }
