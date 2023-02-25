@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import { TodosItemProps } from '../../App'
-import "./style.css"
+import styles from "./style.module.scss"
 
 type TodosProps = {
-  todos: TodosItemProps[],
+  todos: TodosItemProps[]
   setTodos: (todos: TodosItemProps[]) => void
-  text: string,
+  text: string
   setText: (text: string) => void
 }
 
@@ -32,7 +32,10 @@ export default function Todos({ todos, setTodos, text, setText }: TodosProps) {
   // const modObj = () => { setObj({ ...obj, email: 'zzzz@example.com' }) } // 객체 키밸류 수정
   // const delObj = () => { const { email, ...delObj } = obj; setObj(delObj)} // 객체 키 삭제
 
-  const onChange = (e: { preventDefault: () => void; target: { value: string } }) => {
+  const onChange = (e: {
+    preventDefault: () => void
+    target: { value: string }
+  }) => {
     e.preventDefault()
     setText(e.target.value)
   }
@@ -47,15 +50,25 @@ export default function Todos({ todos, setTodos, text, setText }: TodosProps) {
     }
     setKey(key + 1)
     setTodos([...todos, newTodo])
-    setText('')
+    setText("")
   }
 
   const onComplted = (id: number) => {
-    setTodos(todos.map((item) => { return item.id === id ? { ...item, completed: !item.completed } : { ...item }}))
+    setTodos(
+      todos.map((item) => {
+        return item.id === id
+          ? { ...item, completed: !item.completed }
+          : { ...item }
+      })
+    )
   }
 
   const onDelete = (id: number) => {
-    setTodos(todos.filter((item) => { return item.id !== id }))
+    setTodos(
+      todos.filter((item) => {
+        return item.id !== id
+      })
+    )
   }
 
   const render = todos.map((item) => {
@@ -65,7 +78,7 @@ export default function Todos({ todos, setTodos, text, setText }: TodosProps) {
           <span>#</span>
           <span>{item.id} / </span>
           <span>{item.title}</span>
-          <span>{item.completed && '✅'}</span>
+          <span>{item.completed && "✅"}</span>
         </span>
         <span onClick={() => onDelete(item.id)}>❌</span>
       </div>
@@ -74,10 +87,16 @@ export default function Todos({ todos, setTodos, text, setText }: TodosProps) {
 
   // XML
   return (
-    <div className="App">
+    <div className={styles.Todos}>
       <h1>투두 앱</h1>
       <form onSubmit={onCreate}>
-        <input type="text" name="todo" value={text} placeholder="할일 적기" onChange={onChange}></input>
+        <input
+          type="text"
+          name="todo"
+          value={text}
+          placeholder="할일 적기"
+          onChange={onChange}
+        ></input>
         <input type="submit" value="등록"></input>
       </form>
       {render}

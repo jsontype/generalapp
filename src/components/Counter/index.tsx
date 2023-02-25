@@ -1,13 +1,11 @@
-import { useState } from 'react'
-import './style.scss'
+import styles from "./style.module.scss"
 
 type Counterprops = {
   count: number
-  setCount: (count: number) => void,
+  setCount: (count: number) => void
 }
 
-
-export default function Counter ({ count, setCount }: Counterprops) {
+export default function Counter({ count, setCount }: Counterprops) {
   const onIncrease = () => {
     setCount(count + 1)
   }
@@ -18,9 +16,13 @@ export default function Counter ({ count, setCount }: Counterprops) {
 
   return (
     <>
-      <div className="countLabel">{count}</div>
-      <button className="countBtn" onClick={onIncrease}>+</button>
-      <button className="countBtn" onClick={onDecrease}>-</button>
+      <div className={styles.countLabel}>{count}</div>
+      <button className={styles.countBtn} onClick={onIncrease}>
+        +
+      </button>
+      <button className={styles.countBtn} onClick={onDecrease}>
+        -
+      </button>
     </>
   )
 }

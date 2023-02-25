@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import "./style.scss"
+import styles from "./style.module.scss"
 import MovieDetail from "./MovieDetail"
 
 export type MoviesItemProps = {
@@ -12,14 +12,14 @@ export type MoviesItemProps = {
 }
 
 type MoviesProps = {
-  movies: MoviesItemProps[],
+  movies: MoviesItemProps[]
   setMovies: (movies: []) => void
 }
 
-export default function Movies ({ movies, setMovies }: MoviesProps) {
+export default function Movies({ movies, setMovies }: MoviesProps) {
   // 영화 아이템 중 "타이틀을 클릭해 상세정보가 호출된 영화 아이템"의 id
   const [detailId, setDetailId] = useState(0)
- 
+
   useEffect(() => {
     // api 호출
     // fetch("https://yts.mx/api/v2/list_movies.json?sort_by=rating")
@@ -32,24 +32,30 @@ export default function Movies ({ movies, setMovies }: MoviesProps) {
   const render = movies.map((item) => {
     return (
       <div key={item.id}>
-        <div className="movieItem">
-          <div className="movieTitle" onClick={() => { item.id === detailId ? setDetailId(0) : setDetailId(item.id) }}>
-            {item.title}{item.rating >= 8 ? '🔥' : ''}({item.year})
+        <div className={styles.movieItem}>
+          <div
+            className={styles.movieTitle}
+            onClick={() => {
+              item.id === detailId ? setDetailId(0) : setDetailId(item.id)
+            }}
+          >
+            {item.title}
+            {item.rating >= 8 ? "🔥" : ""}({item.year})
           </div>
           <img
-            className="movieImage"
+            className={styles.movieImage}
             src={item.large_cover_image}
             alt={item.title}
           ></img>
         </div>
-        { detailId === item.id && <MovieDetail item={item} /> }
+        {detailId === item.id && <MovieDetail item={item} />}
       </div>
     )
   })
 
   return (
     <div>
-      <h1 className="title">무비 앱</h1>
+      <h1 className={styles.title}>무비 앱</h1>
       {render}
     </div>
   )

@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import "./style.scss"
+import styles from "./style.module.scss"
 
 type NewsItemProps = {
   points: number
@@ -26,14 +26,15 @@ export default function News({ news, setNews }: NewsProps) {
     const rank = item.points >= 90 ? "good" : item.points >= 70 ? "soso" : "bad"
 
     return (
-      <div key={item.id} className="newsItem">
-        <a className="newsTitle" href={item.url}>
+      <div key={item.id} className={styles.newsItem}>
+        <a className={styles.newsTitle} href={item.url}>
           {item.title}
         </a>
-        <div className="newDetailItem">
-          <span className="newsWriter">작성자 : {item.user}</span>
-          <span className="newsPoint">
-            포인트 : <span className={rank}>{item.points || "(평점없음)"}</span>
+        <div className={styles.newDetailItem}>
+          <span className={styles.newsWriter}>작성자 : {item.user}</span>
+          <span className={styles.newsPoint}>
+            포인트 :{" "}
+            <span className={styles[rank]}>{item.points || "(평점없음)"}</span>
           </span>
         </div>
       </div>
@@ -42,7 +43,7 @@ export default function News({ news, setNews }: NewsProps) {
 
   return (
     <div>
-      <h2 className="title">뉴스 </h2>
+      <h2 className={styles.title}>뉴스</h2>
       {render}
     </div>
   )
