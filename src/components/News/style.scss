@@ -1,27 +1,29 @@
+@import '../../styles/resources.scss';
+
 .newsTitle {
-  font-size: 20px;
-  color: gray;
+  font-size: $md;
+  color: $gray;
   text-decoration: none;
-  border: 1px solid gray;
+  border: 1px solid $gray;
   border-radius: 10px;
   padding: 3px;
 }
 
 .newsTitle:hover {
-  color: pink;
+  color: $pink;
 }
 
 
 .good {
-  color: blue;
+  color: $blue;
 }
 
 .soso {
-  color: orange;
+  color: $orange;
 }
 
 .bad {
-  color: red;
+  color: $red;
 }
 
 .newsItem {
@@ -42,9 +44,9 @@
 }
 
 .newsPoint {
-  color: gray;
+  color: $gray;
 }
 
 .newsWriter {
-  color: gray;
+  color: $gray;
 }

@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import "./style.css"
+import "./style.scss"
 
 type NewsItemProps = {
   points: number
