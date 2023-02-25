@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import "./style.css"
+import "./style.scss"
 import MovieDetail from "./MovieDetail"
 
 export type MoviesItemProps = {
