@@ -1,10 +1,10 @@
-// 2.류트리듀서
+import counter from "./counter"
 import todos from "./todos"
 import { combineReducers } from "redux"
 
-
 const rootReducer = combineReducers({
-    todos,
+  counter,
+  todos,
 })
 
 export default rootReducer

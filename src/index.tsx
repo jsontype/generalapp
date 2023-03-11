@@ -2,10 +2,9 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import App from "./App"
 import { BrowserRouter } from "react-router-dom"
-// 3.스토어 만들기
 import { createStore } from "redux"
 import { Provider } from "react-redux"
-import rootReducer from "./modules"
+import rootReducer from "modules"
 const store = createStore(rootReducer)
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)

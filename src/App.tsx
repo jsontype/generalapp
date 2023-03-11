@@ -5,6 +5,7 @@ import Counter from "./components/Counter"
 import TodosContainer from "components/Todos/container"
 import styles from "./App.module.scss"
 import { Routes, Route, Link } from "react-router-dom"
+import CounterContainer from "components/Counter/container"
 
 export type TodosItemProps = {
   id: number
@@ -15,8 +16,6 @@ export type TodosItemProps = {
 
 export default function App() {
   // JS
-  // 카운터 아이템
-  const [count, setCount] = useState(0)
   // 뉴스 아이템
   const [news, setNews] = useState([])
   // 영화 아이템
@@ -39,9 +38,7 @@ export default function App() {
       </Link>
 
       <Routes>
-        <Route
-          path="/counter"
-          element={<Counter count={count} setCount={setCount} />}
+        <Route path="/counter" element={<CounterContainer />}
         ></Route>
         <Route
           path="/movies"
