@@ -1,7 +1,6 @@
 import { useState } from "react"
 import Movies from "./components/Movies"
 import News from "./components/News"
-import Counter from "./components/Counter"
 import TodosContainer from "components/Todos/container"
 import styles from "./App.module.scss"
 import { Routes, Route, Link } from "react-router-dom"

@@ -32,6 +32,7 @@ export default function Todos({
   const onSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault()
     onCreate(text)
+    setText("")
   }
 
   const onChange = (e: {
