@@ -2,7 +2,7 @@ import { useState } from "react"
 import Movies from "./components/Movies"
 import News from "./components/News"
 import Counter from "./components/Counter"
-import Todos from "./components/Todos"
+import TodosContainer from "components/Todos/container"
 import styles from "./App.module.scss"
 import { Routes, Route, Link } from "react-router-dom"
 import CounterContainer from "components/Counter/container"
@@ -18,9 +18,6 @@ export default function App() {
   // JS
   // 뉴스 아이템
   const [news, setNews] = useState([])
-  // 투두 아이템
-  const [todos, setTodos] = useState<TodosItemProps[]>([])
-  const [text, setText] = useState("")
   // 영화 아이템
   const [movies, setMovies] = useState([])
 
@@ -52,16 +49,7 @@ export default function App() {
           element={<News news={news} setNews={setNews} />}
         ></Route>
         <Route
-          path="/todos"
-          element={
-            <Todos
-              todos={todos}
-              setTodos={setTodos}
-              text={text}
-              setText={setText}
-            />
-          }
-        ></Route>
+          path="/todos" element={<TodosContainer />}></Route>
         {/* <Route path="/movies" element={<Profile />}>
           <Route path=":rating" element={<Profile />}></Route>
         </Route> */}
