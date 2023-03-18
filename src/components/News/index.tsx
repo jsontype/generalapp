@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import styles from "./style.module.scss"
+import axios from "axios"
 
 type NewsItemProps = {
   points: number
@@ -17,11 +18,16 @@ type NewsProps = {
 export default function News({ news, setNews }: NewsProps) {
   useEffect(() => {
     // api 호출
-    fetch("https://api.hnpwa.com/v0/news.json")
-      .then((res) => res.json())
-      .then((json) => setNews(json))
-  }, [setNews])
+    fetchNews("https://api.hnpwa.com/v0/news.json")})
 
+  const fetchNews = async (url: string) => {
+    try {
+      const response = await axios.get(url)
+      setNews(response.data)
+    }  catch(e) {
+      console.error('에러발생', e)
+    }
+  }
   const render = news.map((item) => {
     const rank = item.points >= 90 ? "good" : item.points >= 70 ? "soso" : "bad"
 
