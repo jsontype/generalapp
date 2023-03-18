@@ -1,3 +1,4 @@
+import { memo } from "react"
 import styles from "./style.module.scss"
 
 type Counterprops = {
@@ -6,11 +7,11 @@ type Counterprops = {
   onDecrease : (count: number) => void
 }
 
-export default function Counter({ 
+const Counter = memo(({ 
   count,
   onIncrease,
   onDecrease,
- }: Counterprops) {
+ }: Counterprops) => {
   return (
     <>
       <div className={styles.countLabel}>{count}</div>
@@ -23,4 +24,6 @@ export default function Counter({
       </button>
     </>
   )
-}
+})
+
+export default Counter

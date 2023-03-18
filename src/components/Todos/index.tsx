@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { memo, useState } from "react"
 import { TodosItemProps } from 'App'
 import styles from "./style.module.scss"
 
@@ -9,12 +9,12 @@ type TodosProps = {
   onDelete: (id: number) => void
 }
 
-export default function Todos({
+ const Todos = memo(({
     todos,
     onCreate, 
     onDelete,
     onCompleted
-}: TodosProps) {
+}: TodosProps) => {
   // JS
   const [text, setText] = useState("")
 
@@ -74,4 +74,6 @@ export default function Todos({
       {render}
     </div>
   )
-}
+})
+
+export default Todos
