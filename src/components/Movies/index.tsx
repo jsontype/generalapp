@@ -3,6 +3,7 @@ import styles from "./style.module.scss"
 import MovieDetail from "./MovieDetail"
 import { useSearchParams } from "react-router-dom"
 import { Link } from "react-router-dom"
+import axios from "axios"
 
 export type MoviesItemProps = {
   id: number
@@ -32,31 +33,30 @@ export default function Movies({ movies, setMovies }: MoviesProps) {
     // api 호출
     setSortStandard(sort)
 
+    const fetchMoives = async (url: string) => {
+      try {
+        const response = await axios.get(url)
+        setMovies(response.data.data.movies)
+      }  catch(e) {
+        console.error('에러발생', e)
+      }
+    }
+
     switch (sortStandard) {
       case "title":
-        fetch("https://yts.mx/api/v2/list_movies.json?sort_by=title")
-          .then((res) => res.json())
-          .then((json) => setMovies(json.data.movies))
+        fetchMoives("https://yts.mx/api/v2/list_movies.json?sort_by=title")
         break
       case "rating":
-        fetch("https://yts.mx/api/v2/list_movies.json?sort_by=rating")
-          .then((res) => res.json())
-          .then((json) => setMovies(json.data.movies))
+        fetchMoives("https://yts.mx/api/v2/list_movies.json?sort_by=rating")
         break
       case "year":
-        fetch("https://yts.mx/api/v2/list_movies.json?sort_by=year")
-          .then((res) => res.json())
-          .then((json) => setMovies(json.data.movies))
+        fetchMoives("https://yts.mx/api/v2/list_movies.json?sort_by=year")
         break
       case "date_added":
-        fetch("https://yts.mx/api/v2/list_movies.json?sort_by=date_added")
-          .then((res) => res.json())
-          .then((json) => setMovies(json.data.movies))
+        fetchMoives("https://yts.mx/api/v2/list_movies.json?sort_by=date_added")
         break
       default:
-        fetch("https://yts.mx/api/v2/list_movies.json")
-          .then((res) => res.json())
-          .then((json) => setMovies(json.data.movies))
+        fetchMoives("https://yts.mx/api/v2/list_movies.json")
     }
   }, [setMovies, sort, sortStandard])
 
