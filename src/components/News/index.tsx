@@ -58,7 +58,7 @@ const News = memo(({ news, setNews }: NewsProps) => {
 
   return (
     <div>
-      <h2 className={styles.title}>뉴스</h2>
+      <h2 className={styles.title}>{String(t("news:newsTitle"))}</h2>
       {render}
     </div>
   )
