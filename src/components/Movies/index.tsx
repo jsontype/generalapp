@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { memo, useState, useEffect, useMemo } from "react"
 import styles from "./style.module.scss"
 import MovieDetail from "./MovieDetail"
 import { useSearchParams } from "react-router-dom"
@@ -22,7 +22,7 @@ type MoviesProps = {
   setMovies: (movies: []) => void
 }
 
-export default function Movies({ movies, setMovies }: MoviesProps) {
+const Movies = memo(({ movies, setMovies }: MoviesProps) => {
   // 영화 아이템 중 "타이틀을 클릭해 상세정보가 호출된 영화 아이템"의 id
   const [detailId, setDetailId] = useState(0)
   const [searchParams] = useSearchParams()
@@ -61,7 +61,7 @@ export default function Movies({ movies, setMovies }: MoviesProps) {
   }, [setMovies, sort, sortStandard])
 
   // 주의 : render 안에 onClick 프롭 넣을 때는 함수형업데이트 해야함 (예, onClick={() => setIsOpen()})
-  const render = movies.map((item) => {
+  const render = useMemo(() => movies.map((item) => {
     return (
       <div key={item.id}>
         <div className={styles.movieItem}>
@@ -83,7 +83,8 @@ export default function Movies({ movies, setMovies }: MoviesProps) {
         {detailId === item.id && <MovieDetail item={item} />}
       </div>
     )
-  })
+  }), [detailId, movies]
+  )
 
   // localhost:3000/movies?sort=rating
 
@@ -107,4 +108,6 @@ export default function Movies({ movies, setMovies }: MoviesProps) {
       {render}
     </div>
   )
-}
+})
+
+export default Movies

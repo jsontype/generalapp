@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { memo, useEffect, useMemo } from "react"
 import styles from "./style.module.scss"
 import axios from "axios"
 
@@ -15,7 +15,7 @@ type NewsProps = {
   setNews: (news: []) => void
 }
 
-export default function News({ news, setNews }: NewsProps) {
+const News = memo(({ news, setNews }: NewsProps) => {
   useEffect(() => {
     // api 호출
     fetchNews("https://api.hnpwa.com/v0/news.json")})
@@ -28,7 +28,7 @@ export default function News({ news, setNews }: NewsProps) {
       console.error('에러발생', e)
     }
   }
-  const render = news.map((item) => {
+  const render = useMemo(() => news.map((item) => {
     const rank = item.points >= 90 ? "good" : item.points >= 70 ? "soso" : "bad"
 
     return (
@@ -45,7 +45,7 @@ export default function News({ news, setNews }: NewsProps) {
         </div>
       </div>
     )
-  })
+  }), [news])
 
   return (
     <div>
@@ -53,4 +53,6 @@ export default function News({ news, setNews }: NewsProps) {
       {render}
     </div>
   )
-}
+})
+
+export default News
