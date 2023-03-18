@@ -1,7 +1,13 @@
 @import 'styles/resources.scss';
     
-    .countLabel {
-  font-size: $xxl;
+.countLabel {
+  font-size: $lg;
+    color: $gray;
+    border: 1px solid $gray;
+    width: 250px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .countBtn {

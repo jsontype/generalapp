@@ -14,12 +14,17 @@ const Counter = memo(({
  }: Counterprops) => {
   return (
     <>
-      <div className={styles.countLabel}>{count}</div>
-      <button className={styles.countBtn} onClick={(count: any) => onIncrease(count)}>
+      <div className={styles.countLabel}>카운터: {count}</div>
+      <button
+        className={styles.countBtn}
+        onClick={(count: any) => onIncrease(count)}
+      >
         +
       </button>
       <button
-        className={styles.countBtn} onClick={(count: any) => onDecrease(count)}>
+        className={styles.countBtn}
+        onClick={(count: any) => onDecrease(count)}
+      >
         -
       </button>
     </>

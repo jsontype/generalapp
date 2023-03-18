@@ -5,6 +5,7 @@ import TodosContainer from "components/Todos/container"
 import styles from "./App.module.scss"
 import { Routes, Route, Link } from "react-router-dom"
 import CounterContainer from "components/Counter/container"
+// import { useTranslation } from "react-i18next"
 
 export type TodosItemProps = {
   id: number
@@ -13,8 +14,18 @@ export type TodosItemProps = {
   userId: number
 }
 
-export default function App() {
+export default function App({ i18n }: any) {
   // JS
+  // const { t } = useTranslation()
+
+  const onChangeToKO = () => {
+    i18n.changeLanguage("ko")
+  }
+
+  const onChangeToJA = () => {
+    i18n.changeLanguage("ja")
+  }
+
   // 뉴스 아이템
   const [news, setNews] = useState([])
   // 영화 아이템
@@ -36,9 +47,17 @@ export default function App() {
         <button className={styles.navbarItem}>투두</button>
       </Link>
 
+      <span className={styles.langBtnContainer}>
+        <button className={styles.langBtn} onClick={() => onChangeToKO()}>
+          한
+        </button>
+        <button className={styles.langBtn} onClick={() => onChangeToJA()}>
+          일
+        </button>
+      </span>
+
       <Routes>
-        <Route path="/counter" element={<CounterContainer />}
-        ></Route>
+        <Route path="/counter" element={<CounterContainer />}></Route>
         <Route
           path="/movies"
           element={<Movies movies={movies} setMovies={setMovies} />}
@@ -47,8 +66,7 @@ export default function App() {
           path="/news"
           element={<News news={news} setNews={setNews} />}
         ></Route>
-        <Route
-          path="/todos" element={<TodosContainer />}></Route>
+        <Route path="/todos" element={<TodosContainer />}></Route>
         {/* <Route path="/movies" element={<Profile />}>
           <Route path=":rating" element={<Profile />}></Route>
         </Route> */}

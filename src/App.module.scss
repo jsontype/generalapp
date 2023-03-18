@@ -17,3 +17,15 @@
 h1 {
   font-size: $xl;
 }
+.langBtnContainer {
+  margin-left: 50px;
+}
+
+.langBtn {
+  font-size: $sm;
+  border-radius: 10px;
+  border: 1px solid $white;
+  background: $pink;
+  color: $white;
+  padding: 5px;
+}
