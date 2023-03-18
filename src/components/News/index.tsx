@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { memo, useEffect, useMemo } from "react"
 import styles from "./style.module.scss"
 
 type NewsItemProps = {
@@ -14,7 +14,7 @@ type NewsProps = {
   setNews: (news: []) => void
 }
 
-export default function News({ news, setNews }: NewsProps) {
+const News = memo(({ news, setNews }: NewsProps) => {
   useEffect(() => {
     // api 호출
     fetch("https://api.hnpwa.com/v0/news.json")
@@ -22,8 +22,8 @@ export default function News({ news, setNews }: NewsProps) {
       .then((json) => setNews(json))
   }, [setNews])
 
-  const render = news.map((item) => {
-    const rank = item.points >= 90 ? "good" : item.points >= 70 ? "soso" : "bad"
+  const render = useMemo(() => news.map((item) => {
+        const rank = item.points >= 90 ? "good" : item.points >= 70 ? "soso" : "bad"
 
     return (
       <div key={item.id} className={styles.newsItem}>
@@ -39,7 +39,7 @@ export default function News({ news, setNews }: NewsProps) {
         </div>
       </div>
     )
-  })
+  }), [news])
 
   return (
     <div>
@@ -47,4 +47,5 @@ export default function News({ news, setNews }: NewsProps) {
       {render}
     </div>
   )
-}
+})
+export default News
