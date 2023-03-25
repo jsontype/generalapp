@@ -4,6 +4,7 @@ import MovieDetail from "./MovieDetail"
 import { useSearchParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 import axios from "axios"
+import { useTranslation } from "react-i18next"
 
 export type MoviesItemProps = {
   id: number
@@ -28,6 +29,7 @@ const Movies = memo(({ movies, setMovies }: MoviesProps) => {
   const [searchParams] = useSearchParams()
   const sort = searchParams.get("sort")
   const [sortStandard, setSortStandard] = useState<string | null>("")
+  const { t } = useTranslation()
 
   useEffect(() => {
     // api 호출
@@ -90,19 +92,19 @@ const Movies = memo(({ movies, setMovies }: MoviesProps) => {
 
   return (
     <div>
-      <h1 className={styles.title}>무비 앱</h1>
+      <h1 className={styles.title}>{(t("movies:title"))}</h1>
       <div className={styles.sortBtnList}>
         <Link to="/movies?sort=title">
-          <button className={styles.sortBtn}>제목순</button>
+          <button className={styles.sortBtn}>{(t("movies:movieTitleOrder"))}</button>
         </Link>
         <Link to="/movies?sort=rating">
-          <button className={styles.sortBtn}>평점순</button>
+          <button className={styles.sortBtn}> {(t("movies:movieRatingOrder"))}</button>
         </Link>
         <Link to="/movies?sort=year">
-          <button className={styles.sortBtn}>개봉연도순</button>
+          <button className={styles.sortBtn}> {(t("movies:movieReleaseOrder"))}</button>
         </Link>
         <Link to="/movies?sort=date_added">
-          <button className={styles.sortBtn}>등록순</button>
+          <button className={styles.sortBtn}> {(t("movies:movieRegistrationOrder"))}</button>
         </Link>
       </div>
       {render}
@@ -110,4 +112,3 @@ const Movies = memo(({ movies, setMovies }: MoviesProps) => {
   )
 })
 export default Movies
-

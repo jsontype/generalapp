@@ -1,4 +1,5 @@
 import todos from "./todos.json"
+import movies from "./movies.json"
 import news from "./news.json"
 import counter from "./counter.json"
 import nav from "./nav.json"
@@ -7,6 +8,7 @@ import nav from "./nav.json"
 const ko = {
   // 이후 json 파일을 추가해서 사용한다.
   todos,
+  movies,
   news,
   counter,
   nav,
