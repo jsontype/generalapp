@@ -5,7 +5,7 @@ import TodosContainer from "components/Todos/container"
 import styles from "./App.module.scss"
 import { Routes, Route, Link } from "react-router-dom"
 import CounterContainer from "components/Counter/container"
-// import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next"
 
 export type TodosItemProps = {
   id: number
@@ -16,7 +16,7 @@ export type TodosItemProps = {
 
 export default function App({ i18n }: any) {
   // JS
-  // const { t } = useTranslation()
+  const { t } = useTranslation()
 
   const onChangeToKO = () => {
     i18n.changeLanguage("ko")
@@ -35,24 +35,24 @@ export default function App({ i18n }: any) {
   return (
     <div className={styles.App}>
       <Link to="/counter">
-        <button className={styles.navbarItem}>카운터</button>
+        <button className={styles.navbarItem}>{String(t("nav:navCounter"))}</button>
       </Link>
       <Link to="/movies">
-        <button className={styles.navbarItem}>무비</button>
+        <button className={styles.navbarItem}>{String(t("nav:navMovie"))}</button>
       </Link>
       <Link to="/news">
-        <button className={styles.navbarItem}>뉴스</button>
+        <button className={styles.navbarItem}>{String(t("nav:navNews"))}</button>
       </Link>
       <Link to="/todos">
-        <button className={styles.navbarItem}>투두</button>
+        <button className={styles.navbarItem}>{String(t("nav:navTodo"))}</button>
       </Link>
 
       <span className={styles.langBtnContainer}>
         <button className={styles.langBtn} onClick={() => onChangeToKO()}>
-          한
+        {String(t("nav:langKo"))}
         </button>
         <button className={styles.langBtn} onClick={() => onChangeToJA()}>
-          일
+        {String(t("nav:langJP"))}
         </button>
       </span>
 
