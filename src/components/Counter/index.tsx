@@ -1,5 +1,6 @@
 import { memo } from "react"
 import styles from "./style.module.scss"
+import { useTranslation } from "react-i18next"
 
 type Counterprops = {
   count: number
@@ -12,9 +13,10 @@ const Counter = memo(({
   onIncrease,
   onDecrease,
  }: Counterprops) => {
+  const { t } = useTranslation()
   return (
     <>
-      <div className={styles.countLabel}>카운터: {count}</div>
+      <div className={styles.countLabel}>{String(t("counter:counterLabel"))}: {count}</div>
       <button
         className={styles.countBtn}
         onClick={(count: any) => onIncrease(count)}
