@@ -1,4 +1,5 @@
 import todos from "./todos.json"
+import news from "./news.json"
 import counter from "./counter.json"
 import nav from "./nav.json"
 
@@ -6,6 +7,7 @@ import nav from "./nav.json"
 const ja = {
   // 이후 json 파일을 추가해서 사용한다.
   todos,
+  news,
   counter,
   nav,
 }
