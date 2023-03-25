@@ -1,6 +1,7 @@
 import { memo, useState } from "react"
 import { TodosItemProps } from 'App'
 import styles from "./style.module.scss"
+import { useTranslation } from "react-i18next"
 
 type TodosProps = {
   todos: TodosItemProps[]
@@ -11,6 +12,8 @@ type TodosProps = {
 
 const Todos = memo(({ todos, onCreate, onDelete, onCompleted }: TodosProps) => {
   // JS
+  const { t } = useTranslation()
+
   const [text, setText] = useState("")
 
   // useEffect(() => {
@@ -55,16 +58,16 @@ const Todos = memo(({ todos, onCreate, onDelete, onCompleted }: TodosProps) => {
   // XML
   return (
     <div className={styles.Todos}>
-      <h1>투두 앱</h1>
+      <h1>{t("todos:title")}</h1>
       <form onSubmit={onSubmit}>
         <input
           type="text"
           name="todo"
           value={text}
-          placeholder="할일 적기"
+          placeholder={String(t("todos:todoPlaceholder"))}
           onChange={onChange}
         ></input>
-        <input type="submit" value="등록"></input>
+        <input type="submit" value={String(t("todos:todoSubmit"))}></input>
       </form>
       {render}
     </div>

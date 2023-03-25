@@ -1,6 +1,7 @@
 import { memo, useEffect, useMemo } from "react"
 import styles from "./style.module.scss"
 import axios from "axios"
+import { useTranslation } from "react-i18next"
 
 type NewsItemProps = {
   points: number
@@ -20,7 +21,7 @@ const News = memo(({ news, setNews }: NewsProps) => {
     // api 호출
     fetchNews("https://api.hnpwa.com/v0/news.json")
   })
-
+  const { t } = useTranslation()
   const fetchNews = async (url: string) => {
     try {
       const response = await axios.get(url)
@@ -41,9 +42,9 @@ const News = memo(({ news, setNews }: NewsProps) => {
               {item.title}
             </a>
             <div className={styles.newDetailItem}>
-              <span className={styles.newsWriter}>작성자 : {item.user}</span>
+              <span className={styles.newsWriter}>{String(t("news:newsWriter"))} : {item.user}</span>
               <span className={styles.newsPoint}>
-                포인트 :{" "}
+              {String(t("news:newsPoint"))} :{" "}
                 <span className={styles[rank]}>
                   {item.points || "(평점없음)"}
                 </span>
@@ -57,7 +58,7 @@ const News = memo(({ news, setNews }: NewsProps) => {
 
   return (
     <div>
-      <h2 className={styles.title}>뉴스</h2>
+      <h2 className={styles.title}>{String(t("news:newsTitle"))}</h2>
       {render}
     </div>
   )
