@@ -42,9 +42,11 @@ const News = memo(({ news, setNews }: NewsProps) => {
               {item.title}
             </a>
             <div className={styles.newDetailItem}>
-              <span className={styles.newsWriter}>{String(t("news:newsWriter"))} : {item.user}</span>
+              <span className={styles.newsWriter}>
+                {String(t("news:newsWriter"))} : {item.user}
+              </span>
               <span className={styles.newsPoint}>
-              {String(t("news:newsPoint"))} :{" "}
+                {String(t("news:newsPoint"))} :{" "}
                 <span className={styles[rank]}>
                   {item.points || "(평점없음)"}
                 </span>
@@ -53,7 +55,7 @@ const News = memo(({ news, setNews }: NewsProps) => {
           </div>
         )
       }),
-    [news]
+    [news, t]
   )
 
   return (
