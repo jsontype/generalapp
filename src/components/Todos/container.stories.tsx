@@ -5,14 +5,14 @@ import TodosContainer from "./container"
 import rootReducer from "../../modules"
 
 export default {
-    title: "TodosContainer",
-    component: TodosContainer,
+  title: "TodosContainer",
+  component: TodosContainer,
 }
 
 const store = createStore(rootReducer)
 
 export const Default = () => (
-    <Provider store={store}>
-        <TodosContainer />
-    </Provider>
+  <Provider store={store}>
+    <TodosContainer />
+  </Provider>
 )
