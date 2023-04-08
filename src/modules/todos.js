@@ -6,28 +6,21 @@ const COMPLETE_TODO = "todo/COMPLETE_TODO";
 const DELETE_TODO = "todo/DELETE_TODO";
 
 // 액션생성함수
-let key = 2
+let key = 1
 export const addTodo = (title) => ({
-    type: ADD_TODO,
-    todo: {
-        id: key++,
-        title,
-        completed: false,
-        userID: 1,
-    }
-});
-export const completeTodo = (id) => ({ type: COMPLETE_TODO, id });
-export const deleteTodo = (id) => ({ type: DELETE_TODO, id });
+  type: ADD_TODO,
+  todo: {
+    id: key++,
+    title,
+    completed: false,
+    userID: 1,
+  },
+})
+export const completeTodo = (id) => ({ type: COMPLETE_TODO, id })
+export const deleteTodo = (id) => ({ type: DELETE_TODO, id })
 
 //초기값
-const initialState = [
-    {
-        id: 1,
-        title: "",
-        completed: false,
-        userID: 1,
-    }
-]
+const initialState = []
 
 // 리듀서
 export default function todoReducer(state = initialState, action) {

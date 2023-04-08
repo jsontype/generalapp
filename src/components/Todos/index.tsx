@@ -2,6 +2,9 @@ import { memo, useState } from "react"
 import { TodosItemProps } from 'App'
 import styles from "./style.module.scss"
 import { useTranslation } from "react-i18next"
+import TextField from "@mui/material/TextField"
+import Button from "@mui/material/Button"
+import ListItems from "../atoms/ListItems"
 
 type TodosProps = {
   todos: TodosItemProps[]
@@ -15,17 +18,6 @@ const Todos = memo(({ todos, onCreate, onDelete, onCompleted }: TodosProps) => {
   const { t } = useTranslation()
 
   const [text, setText] = useState("")
-
-  // useEffect(() => {
-  //   fetch("https://jsonplaceholder.typicode.com/todos")
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       const result = json.filter(
-  //         (item: { userId: number }) => item.userId === 1
-  //       )
-  //       setTodos(result)
-  //     })
-  // }, [setTodos])
 
   const onSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault()
@@ -41,35 +33,33 @@ const Todos = memo(({ todos, onCreate, onDelete, onCompleted }: TodosProps) => {
     setText(e.target.value)
   }
 
-  const render = todos.map((item) => {
-    return (
-      <div key={item.id}>
-        <span onClick={() => onCompleted(item.id)}>
-          <span>#</span>
-          <span>{item.id} / </span>
-          <span>{item.title}</span>
-          <span>{item.completed && "✅"}</span>
-        </span>
-        <span onClick={() => onDelete(item.id)}>❌</span>
-      </div>
-    )
-  })
-
   // XML
   return (
     <div className={styles.Todos}>
       <h1>{t("todos:title")}</h1>
       <form onSubmit={onSubmit}>
-        <input
+        <TextField
+          required
+          id="outlined-required"
+          label="New Todo"
           type="text"
+          // new
           name="todo"
           value={text}
           placeholder={String(t("todos:todoPlaceholder"))}
           onChange={onChange}
-        ></input>
-        <input type="submit" value={String(t("todos:todoSubmit"))}></input>
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          value={String(t("todos:todoSubmit"))}
+          sx={{ ml: 2 }}
+          style={{ height: "56px" }}
+        >
+          {t("todos:todoSubmit")}
+        </Button>
       </form>
-      {render}
+      <ListItems todos={todos} onDelete={onDelete} onCompleted={onCompleted} />
     </div>
   )
 })
