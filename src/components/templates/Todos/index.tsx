@@ -1,10 +1,11 @@
 import { memo, useState } from "react"
-import { TodosItemProps } from 'App'
+import { TodosItemProps } from "App"
 import styles from "./style.module.scss"
 import { useTranslation } from "react-i18next"
 import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button"
-import ListItems from "../atoms/ListItems"
+import ListItems from "components/atoms/ListItems"
+import Title from "components/atoms/Title"
 
 type TodosProps = {
   todos: TodosItemProps[]
@@ -36,7 +37,8 @@ const Todos = memo(({ todos, onCreate, onDelete, onCompleted }: TodosProps) => {
   // XML
   return (
     <div className={styles.Todos}>
-      <h1>{t("todos:title")}</h1>
+      <Title title={t("todos:title")} />
+
       <form onSubmit={onSubmit}>
         <TextField
           required
@@ -50,13 +52,14 @@ const Todos = memo(({ todos, onCreate, onDelete, onCompleted }: TodosProps) => {
           onChange={onChange}
         />
         <Button
+          color="inherit"
           type="submit"
           variant="contained"
           value={String(t("todos:todoSubmit"))}
           sx={{ ml: 2 }}
           style={{ height: "56px" }}
         >
-          {t("todos:todoSubmit")}
+          <span className={styles.btnText}>{t("todos:todoSubmit")}</span>
         </Button>
       </form>
       <ListItems todos={todos} onDelete={onDelete} onCompleted={onCompleted} />

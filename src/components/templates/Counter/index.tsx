@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import Button from "@mui/material/Button"
 import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
-import Typography from "@mui/material/Typography"
+import Title from "components/atoms/Title"
 
 type Counterprops = {
   count: number
@@ -15,9 +15,7 @@ const Counter = memo(({ count, onIncrease, onDecrease }: Counterprops) => {
   const { t } = useTranslation()
   return (
     <>
-      <Typography sx={{ mt: 2 }} variant="h4" gutterBottom>
-        {t("counter:counterLabel")}
-      </Typography>
+      <Title title={t("counter:counterLabel")} />
       <Box
         sx={{
           width: 300,

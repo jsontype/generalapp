@@ -1,4 +1,4 @@
-@import '../../styles/resources.scss';
+@import 'styles/resources.scss';
 
 .newsTitle {
   font-size: $md;
@@ -32,14 +32,14 @@
 
 .newDetailItem {
   margin-top: 7px;
-  margin-bottom: 10px;  
+  margin-bottom: 10px;
 }
 
-.newDetailItem > span {
+.newDetailItem>span {
   margin-left: 10px;
 }
 
-.newDetailItem > span:not(:last-child)::after {
+.newDetailItem>span:not(:last-child)::after {
   content: ' | ';
 }
 

@@ -1,10 +1,10 @@
 import { useState } from "react"
-import Movies from "./components/Movies"
-import News from "./components/News"
-import TodosContainer from "components/Todos/container"
+import Movies from "./components/templates/Movies"
+import News from "./components/templates/News"
+import TodosContainer from "components/templates/Todos/container"
 import styles from "./App.module.scss"
 import { Routes, Route, Link } from "react-router-dom"
-import CounterContainer from "components/Counter/container"
+import CounterContainer from "components/templates/Counter/container"
 import { useTranslation } from "react-i18next"
 
 export type TodosItemProps = {

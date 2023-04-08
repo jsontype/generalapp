@@ -2,6 +2,7 @@ import { memo, useEffect, useMemo } from "react"
 import styles from "./style.module.scss"
 import axios from "axios"
 import { useTranslation } from "react-i18next"
+import Title from "components/atoms/Title"
 
 type NewsItemProps = {
   points: number
@@ -60,7 +61,7 @@ const News = memo(({ news, setNews }: NewsProps) => {
 
   return (
     <div>
-      <h2 className={styles.title}>{String(t("news:newsTitle"))}</h2>
+      <Title title={String(t("news:newsTitle"))} />
       {render}
     </div>
   )

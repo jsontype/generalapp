@@ -6,7 +6,8 @@ import { increase, decrease } from "modules/counter"
 export default function CounterContainer() {
   // state 전달
   const count = useSelector(
-	(state: { counter: { count: number } }) => state.counter.count)
+    (state: { counter: { count: number } }) => state.counter.count
+  )
 
   // action 전달
   const dispatch = useDispatch()

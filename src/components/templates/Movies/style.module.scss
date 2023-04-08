@@ -1,4 +1,4 @@
-@import '../../styles/resources.scss';
+@import 'styles/resources.scss';
 
 .title {
   text-align: center;
@@ -33,6 +33,7 @@
   border-radius: $xs;
   flex: 1;
 }
+
 .sortBtnList {
   margin-bottom: 15px;
 }
@@ -40,6 +41,14 @@
 .sortBtn {
   background: $gray;
   font-size: 20px;
-  border: 1px solid $white;
   color: $white;
+}
+
+.sortLink {
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.btnText {
+  color: gray;
 }
