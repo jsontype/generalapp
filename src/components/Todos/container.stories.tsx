@@ -11,6 +11,8 @@ export default {
 
 const store = createStore(rootReducer)
 
+console.log("test")
+
 export const Default = () => (
   <Provider store={store}>
     <TodosContainer />
