@@ -37,3 +37,4 @@ export default {
       news: sampleNews,
       setNews: action("setNews"),
     }
+ 
